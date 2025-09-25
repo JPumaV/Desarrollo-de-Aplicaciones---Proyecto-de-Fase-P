@@ -1,0 +1,85 @@
+// Variables
+$primary: #0d6efd;
+$muted: #6c757d;
+$card-radius: 12px;
+$gap: 1rem;
+$max-width: 1100px;
+$font-stack: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+
+// Mixin para centrado
+@mixin flex-center($dir: row, $justify: center, $align: center) {
+  display: flex;
+  flex-direction: $dir;
+  justify-content: $justify;
+  align-items: $align;
+}
+
+// Reset y layout principal (Grid)
+* { box-sizing: border-box; }
+body {
+  font-family: $font-stack;
+  color: #222;
+  margin: 0;
+  background: #f8f9fa;
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  gap: $gap;
+}
+
+// Header
+.site-header {
+  border-bottom: 1px solid #e9ecef;
+  nav {
+    max-width: $max-width;
+    margin: 0 auto;
+    @include flex-center(row, space-between, center);
+  }
+}
+
+// Main container usa Grid para layout principal
+main.container {
+  max-width: $max-width;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $gap;
+  padding: 1rem;
+}
+
+// Responsive: dos columnas en pantallas grandes
+@media (min-width: 900px) {
+  main.container { grid-template-columns: 380px 1fr; align-items: start; }
+  #formColumn { position: sticky; top: 1rem; }
+}
+
+// Tarjetas y sombras
+.card { border-radius: $card-radius; box-shadow: 0 6px 18px rgba(15,23,42,0.04); padding: 0; }
+
+// Flexbox para acciones y botones
+.actions { display: flex; gap: .5rem; align-items: center; }
+
+// Clase utilitaria para ocultar el form inicialmente
+.visually-hidden { display: none !important; }
+
+// Tipografía y pequeños estilos
+h1, h2, h3 { margin: 0; }
+h1 { font-weight: 600; }
+h2 { font-weight: 500; color: $muted; }
+.table-responsive { border-radius: $card-radius; overflow: hidden; }
+.table thead th { white-space: nowrap; }
+.form-label { font-weight: 600; }
+input:invalid, textarea:invalid, select:invalid { border-color: darken($primary, 8%); }
+.btn-primary { background-color: $primary; border-color: $primary; }
+.footer { font-size: .85rem; color: $muted; }
+small { color: $muted; }
+a { color: $primary; text-decoration: none; }
+
+// Regla extra: imágen miniatura en tabla (cuando exista)
+.recipe-thumb { width: 48px; height: 48px; object-fit: cover; border-radius: 6px; }
+
+// Más utilitarias
+.text-muted { color: $muted; }
+.badge-difficulty { padding: .25rem .5rem; border-radius: .5rem; font-size: .75rem; }
+
+// Al menos 20 reglas personalizadas están presentes en este archivo

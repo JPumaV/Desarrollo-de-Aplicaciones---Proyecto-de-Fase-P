@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Recetario Interactivo</title>
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Compiled CSS -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <header class="site-header p-3 bg-light">
+    <nav class="container d-flex align-items-center justify-content-between" aria-label="Barra principal">
+      <h1 class="h4 m-0">Recetario Interactivo</h1>
+      <div>
+        <button id="btnNuevo" class="btn btn-primary">Añadir receta</button>
+      </div>
+    </nav>
+  </header>
+
+  <main class="container my-4">
+    <aside id="formColumn" class="card mb-4 visually-hidden" aria-labelledby="formTitle">
+      <div class="card-body">
+        <h2 id="formTitle" class="card-title h5">Agregar / Editar Receta</h2>
+        <form id="recipeForm" novalidate>
+          <div class="mb-2">
+            <label for="title" class="form-label">Título</label>
+            <input type="text" id="title" class="form-control" required minlength="2" />
+            <div class="invalid-feedback">Ingrese un título (min 2 caracteres).</div>
+          </div>
+
+          <div class="mb-2 d-grid">
+            <label for="category" class="form-label">Categoría</label>
+            <select id="category" class="form-select" required>
+              <option value="">Seleccione</option>
+              <option>Desayuno</option>
+              <option>Almuerzo</option>
+              <option>Cena</option>
+              <option>Postre</option>
+            </select>
+            <div class="invalid-feedback">Seleccione una categoría.</div>
+          </div>
+
+          <div class="mb-2">
+            <label for="ingredients" class="form-label">Ingredientes</label>
+            <textarea id="ingredients" class="form-control" rows="3" required></textarea>
+            <div class="invalid-feedback">Agregue los ingredientes.</div>
+          </div>
+
+          <div class="row g-2 mb-2">
+            <div class="col-6">
+              <label for="time" class="form-label">Tiempo (min)</label>
+              <input type="number" id="time" class="form-control" min="1" required />
+              <div class="invalid-feedback">Ingrese tiempo válido.</div>
+            </div>
+            <div class="col-6">
+              <label for="difficulty" class="form-label">Dificultad</label>
+              <select id="difficulty" class="form-select" required>
+                <option value="">Seleccione</option>
+                <option>Fácil</option>
+                <option>Media</option>
+                <option>Difícil</option>
+              </select>
+              <div class="invalid-feedback">Seleccione dificultad.</div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="image" class="form-label">URL de imagen (opcional)</label>
+            <input type="url" id="image" class="form-control" placeholder="https://..." />
+          </div>
+
+          <div class="mb-2">
+            <label for="servings" class="form-label">Porciones</label>
+            <input type="number" id="servings" class="form-control" min="1" required />
+          </div>
+
+          <input type="hidden" id="recipeId" />
+
+          <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-success">Guardar</button>
+            <button type="button" id="cancelBtn" class="btn btn-secondary">Cancelar</button>
+          </div>
+        </form>
+      </div>
+    </aside>
+
+    <section aria-labelledby="listaTitle">
+      <h2 id="listaTitle" class="h5 mb-3">Lista de recetas</h2>
+      <div class="table-responsive card">
+        <table class="table table-striped mb-0" id="recipesTable">
+          <thead class="table-light">
+            <tr>
+              <th>Título</th>
+              <th>Categoría</th>
+              <th>Tiempo</th>
+              <th>Porciones</th>
+              <th>Dificultad</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-light py-3 mt-4">
+    <div class="container text-center small">Proyecto: Recetario Interactivo — Equipo: Chura Pedro, Mechan Daniel, Murga Germayn, Puma Jhorlan</div>
+  </footer>
+
+  <!-- Bootstrap JS bundle -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

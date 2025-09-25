@@ -1,0 +1,11 @@
+{
+  "name": "recetario-interactivo",
+  "version": "1.0.0",
+  "scripts": {
+    "build:sass": "sass scss/styles.scss css/styles.css --no-source-map --style=expanded",
+    "watch:sass": "sass --watch scss/styles.scss:css/styles.css"
+  },
+  "devDependencies": {
+    "sass": "^1.70.0"
+  }
+}
